@@ -30,6 +30,7 @@
             <div>
                 <label for="tel">tel input type: </label>
                 <input type="tel" id="tel" name="tel">
+                <error-output class="tel-error" for="text"></error-output>
             </div>
             <div>
                 <label for="search">search input type: </label>
@@ -68,7 +69,15 @@
                     emailError.textContent="";
                 else emailError.textContent="Email is Invalid";
             });
-
+            
+            const phoneNumber = document.querySelector('#tel');
+            const phoneNumberError = document.querySelector('.tel-error');
+            phoneNumber.oninput=function(){
+                let phoneNumberRegex=RegExp("^[0-9]{2}[\\s][0-9]{10}$");
+                if(phoneNumberRegex.test(phoneNumber.value))
+                    phoneNumberError.textContent="";
+                else phoneNumberError.textContent="Phone Number is invalid";
+            }
 
             const salary = document.querySelector('#salary');
             const output = document.querySelector('.salary-output');
