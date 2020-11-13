@@ -17,6 +17,7 @@
             <div>
                 <label for="pwd">password input type: </label>
                 <input type="password" id="pwd" name="pwd">
+                <error-output class="password-error" for="text"></error-output>
             </div>
             <div>
                 <label for="email">email input type: </label>
@@ -77,6 +78,16 @@
                 if(phoneNumberRegex.test(phoneNumber.value))
                     phoneNumberError.textContent="";
                 else phoneNumberError.textContent="Phone Number is invalid";
+            }
+
+            const password = document.querySelector('#pwd');
+            const passwordError = document.querySelector('.password-error');
+            password.oninput=function(){
+                let passwordRegex=RegExp(".{8,}");
+                if(passwordRegex.test(password.value))
+                    passwordError.textContent="";
+                else passwordError.textContent="Password is invalid";
+
             }
 
             const salary = document.querySelector('#salary');
